@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoneCraft Outdoors | Hardscaping & Outdoor Living — Fort Collins, CO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --charcoal: #1c1f1e;
+  --slate: #2b3130;
+  --mid: #3d4745;
+  --amber: #d97b2b;
+  --amber-light: #f0a050;
+  --amber-pale: #fdf3e7;
+  --stone: #8a9490;
+  --light: #e8edeb;
+  --white: #ffffff;
+  --bg: #f4f6f5;
+  --display: 'Barlow Condensed', sans-serif;
+  --body: 'Barlow', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); background: var(--bg); color: var(--charcoal); overflow-x: hidden; }
+img { display: block; }
+a { text-decoration: none; }
+
+/* ─── TOP BAR ─── */
+.topbar {
+  background: var(--charcoal);
+  color: var(--light);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.5rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: 0.03em;
+}
+.topbar a { color: var(--amber-light); }
+.topbar-right { display: flex; gap: 2rem; }
+
+/* ─── NAV ─── */
+nav {
+  background: var(--white);
+  border-bottom: 3px solid var(--amber);
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.logo { display: flex; align-items: center; gap: 0.7rem; }
+.logo-mark {
+  width: 44px; height: 44px;
+  background: var(--charcoal);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--amber);
+  letter-spacing: -1px;
+  flex-shrink: 0;
+}
+.logo-name {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--charcoal);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.logo-name span { color: var(--amber); }
+.logo-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--stone);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.nav-links { display: flex; gap: 0.15rem; list-style: none; }
+.nav-links a {
+  font-family: var(--body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--slate);
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.nav-links a:hover { background: var(--bg); color: var(--amber); }
+.nav-cta {
+  background: var(--amber);
+  color: var(--white);
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.65rem 1.6rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.nav-cta:hover { background: #b86420; }
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--charcoal);
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(105deg, rgba(28,31,30,0.97) 40%, rgba(28,31,30,0.65) 100%);
+  z-index: 1;
+}
+.hero-bg-img {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.45;
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(217,123,43,0.2);
+  border: 1px solid rgba(217,123,43,0.5);
+  color: var(--amber-light);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(3.2rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+.hero h1 span { color: var(--amber); }
+.hero-desc {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(232,237,235,0.72);
+  max-width: 500px;
+  margin-bottom: 2.5rem;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.btn-amber {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  background: var(--amber);
+  color: var(--white);
+  padding: 0.85rem 2rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-amber:hover { background: var(--amber-light); transform: translateY(-1px); }
+.btn-wire {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  background: transparent;
+  color: var(--white);
+  padding: 0.85rem 2rem;
+  border-radius: 6px;
+  border: 2px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.btn-wire:hover { border-color: var(--amber); color: var(--amber); }
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.hero-stat-num {
+  font-family: var(--display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--amber);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--stone);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-top: 0.2rem;
+}
+
+/* contact card in hero */
+.hero-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 2.25rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.hero-card-title {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--charcoal);
+  margin-bottom: 0.4rem;
+}
+.hero-card-sub {
+  font-size: 0.85rem;
+  color: var(--stone);
+  margin-bottom: 1.5rem;
+}
+.hform { display: flex; flex-direction: column; gap: 0.85rem; }
+.hform input, .hform select, .hform textarea {
+  font-family: var(--body);
+  font-size: 0.9rem;
+  color: var(--charcoal);
+  background: var(--bg);
+  border: 1.5px solid var(--light);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+.hform input:focus, .hform select:focus, .hform textarea:focus {
+  border-color: var(--amber);
+  background: var(--white);
+}
+.hform input::placeholder, .hform textarea::placeholder { color: #b0bab8; }
+.hform textarea { min-height: 80px; resize: vertical; }
+.hform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.hform-btn {
+  background: var(--amber);
+  color: var(--white);
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  width: 100%;
+}
+.hform-btn:hover { background: #b86420; }
+.hform-note {
+  font-size: 0.73rem;
+  color: var(--stone);
+  text-align: center;
+  margin-top: -0.25rem;
+}
+
+/* ─── TRUST BAR ─── */
+.trust-bar {
+  background: var(--charcoal);
+  border-bottom: 3px solid var(--amber);
+}
+.trust-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  gap: 0;
+  justify-content: space-between;
+  align-items: center;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--light);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.trust-item:first-child { padding-left: 0; }
+.trust-item:last-child { border-right: none; }
+.trust-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* ─── ABOUT ─── */
+.about-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5.5rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.about-imgs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 260px 180px;
+  gap: 10px;
+}
+.about-img {
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--light);
+}
+.about-img.span2 { grid-column: 1 / 3; }
+.about-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.about-img:hover img { transform: scale(1.04); }
+.eyebrow {
+  font-family: var(--display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--amber);
+  margin-bottom: 0.6rem;
+}
+.section-h {
+  font-family: var(--display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  color: var(--charcoal);
+  margin-bottom: 1.25rem;
+}
+.section-p {
+  font-size: 0.97rem;
+  line-height: 1.8;
+  color: #4a5552;
+  margin-bottom: 1.25rem;
+}
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.pill {
+  background: var(--charcoal);
+  color: var(--light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── SERVICES ─── */
+.services-section {
+  background: var(--charcoal);
+  padding: 5.5rem 2.5rem;
+}
+.services-inner { max-width: 1200px; margin: 0 auto; }
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+}
+.services-header .section-h { color: var(--white); margin-bottom: 0; }
+.services-header .eyebrow { color: var(--amber); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1px;
+}
+.services-grid-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 1px;
+}
+.service-tile {
+  background: var(--slate);
+  padding: 1.75rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.service-tile:hover { background: var(--mid); }
+.service-tile:hover .tile-arrow { opacity: 1; transform: translateX(0); }
+.tile-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.tile-name {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.tile-desc {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--stone);
+}
+.tile-arrow {
+  position: absolute;
+  bottom: 1.25rem; right: 1.25rem;
+  color: var(--amber);
+  font-size: 1.1rem;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.see-all-btn {
+  display: block;
+  text-align: center;
+  margin: 2.5rem auto 0;
+  width: fit-content;
+  background: transparent;
+  color: var(--amber);
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 2px solid var(--amber);
+  padding: 0.8rem 2.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.see-all-btn:hover { background: var(--amber); color: var(--white); }
+
+/* ─── WHY US ─── */
+.why-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5.5rem 2.5rem;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.why-card {
+  background: var(--white);
+  border: 1.5px solid var(--light);
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  gap: 1.25rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.why-card:hover {
+  border-color: var(--amber);
+  box-shadow: 0 4px 20px rgba(217,123,43,0.1);
+}
+.why-icon {
+  width: 52px; height: 52px;
+  flex-shrink: 0;
+  background: var(--amber-pale);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+}
+.why-card h3 {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+}
+.why-card p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: #5a6560;
+}
+
+/* ─── PROCESS ─── */
+.process-section {
+  background: var(--amber);
+  padding: 5rem 2.5rem;
+}
+.process-inner { max-width: 1200px; margin: 0 auto; }
+.process-section .eyebrow { color: rgba(28,31,30,0.6); }
+.process-section .section-h { color: var(--charcoal); margin-bottom: 3rem; }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: calc(12.5% + 14px);
+  right: calc(12.5% + 14px);
+  height: 2px;
+  background: rgba(28,31,30,0.2);
+  z-index: 0;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+.step-num {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--charcoal);
+  color: var(--amber);
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+.step h4 {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+}
+.step p {
+  font-size: 0.84rem;
+  line-height: 1.7;
+  color: rgba(28,31,30,0.7);
+}
+
+/* ─── GALLERY ─── */
+.gallery-section { padding: 5.5rem 2.5rem; }
+.gallery-inner { max-width: 1200px; margin: 0 auto; }
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 280px 220px;
+  gap: 10px;
+}
+.gallery-cell {
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--light);
+  position: relative;
+}
+.gallery-cell.wide { grid-column: span 2; }
+.gallery-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.gallery-cell:hover img { transform: scale(1.06); }
+.gallery-cell-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(28,31,30,0.75));
+  color: var(--white);
+  font-family: var(--display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 1.5rem 1rem 0.85rem;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+.gallery-cell:hover .gallery-cell-label { transform: translateY(0); }
+
+/* ─── REVIEWS ─── */
+.reviews-section {
+  background: var(--charcoal);
+  padding: 5.5rem 2.5rem;
+}
+.reviews-inner { max-width: 1200px; margin: 0 auto; }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+.review-card {
+  background: var(--slate);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.stars { color: var(--amber); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1rem; }
+.review-text {
+  font-size: 0.93rem;
+  line-height: 1.75;
+  color: rgba(232,237,235,0.75);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+.reviewer { display: flex; align-items: center; gap: 0.75rem; }
+.reviewer-av {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--amber);
+  color: var(--white);
+  font-family: var(--display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.reviewer-name { font-weight: 600; font-size: 0.9rem; color: var(--white); }
+.reviewer-loc { font-size: 0.75rem; color: var(--stone); margin-top: 0.1rem; }
+
+/* ─── CTA BAND ─── */
+.cta-band {
+  background: var(--amber);
+  padding: 4rem 2.5rem;
+  text-align: center;
+}
+.cta-band h2 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--charcoal);
+  margin-bottom: 0.75rem;
+}
+.cta-band p {
+  font-size: 1.05rem;
+  color: rgba(28,31,30,0.72);
+  margin-bottom: 2rem;
+}
+.cta-band-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-dark {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  background: var(--charcoal);
+  color: var(--white);
+  padding: 0.9rem 2.2rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-dark:hover { background: var(--slate); }
+.btn-white-wire {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  background: transparent;
+  color: var(--charcoal);
+  padding: 0.9rem 2.2rem;
+  border-radius: 6px;
+  border: 2px solid var(--charcoal);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-white-wire:hover { background: var(--charcoal); color: var(--white); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: #111413;
+  color: var(--stone);
+  padding: 4rem 2.5rem 2rem;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 2rem;
+}
+.footer-brand-name {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+.footer-brand-name span { color: var(--amber); }
+.footer-desc {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+.footer-contact-line {
+  font-size: 0.85rem;
+  color: var(--light);
+  margin-bottom: 0.4rem;
+}
+.footer-contact-line a { color: var(--amber-light); }
+.footer-col-title {
+  font-family: var(--display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col ul a {
+  font-size: 0.85rem;
+  color: var(--stone);
+  transition: color 0.15s;
+}
+.footer-col ul a:hover { color: var(--amber); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+}
+.footer-bottom a { color: var(--stone); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>📍 Serving Fort Collins, Loveland, Greeley &amp; Northern Colorado</span>
+  <div class="topbar-right">
+    <span>Mon–Sat 7am–6pm</span>
+    <a href="tel:9705550147">📞 (970) 555-0147</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-mark">SC</div>
+    <div>
+      <div class="logo-name">Stone<span>Craft</span></div>
+      <div class="logo-tag">Outdoors &amp; Hardscaping</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Portfolio</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Free Estimate</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">⭐ Northern Colorado's #1 Rated Hardscaper</div>
+      <h1>Build<br><span>Outdoor</span><br>Spaces<br>That Last.</h1>
+      <p class="hero-desc">StoneCraft Outdoors designs and builds patios, retaining walls, fire features, outdoor kitchens, and custom landscapes across Northern Colorado. Built tough. Built to impress.</p>
+      <div class="hero-btns">
+        <a class="btn-amber" href="#contact">Get a Free Estimate</a>
+        <a class="btn-wire" href="#gallery">View Our Work</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">18+</div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">900+</div>
+          <div class="hero-stat-label">Projects Done</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">4.9★</div>
+          <div class="hero-stat-label">Google Rating</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Licensed &amp; Insured</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Quote Card -->
+    <div class="hero-card" id="contact">
+      <div class="hero-card-title">Get a Free Estimate</div>
+      <p class="hero-card-sub">No commitment. We'll come to you.</p>
+      <form class="hform" onsubmit="return false;">
+        <div class="hform-row">
+          <input type="text" placeholder="First name">
+          <input type="text" placeholder="Last name">
+        </div>
+        <input type="tel" placeholder="Phone number">
+        <input type="email" placeholder="Email address">
+        <select>
+          <option value="" disabled selected>Service needed...</option>
+          <option>Paver Patio</option>
+          <option>Retaining Wall</option>
+          <option>Outdoor Kitchen</option>
+          <option>Fire Pit / Fireplace</option>
+          <option>Concrete Driveway</option>
+          <option>Pergola / Shade Structure</option>
+          <option>Full Landscape Design</option>
+          <option>Other</option>
+        </select>
+        <textarea placeholder="Briefly describe your project..."></textarea>
+        <button class="hform-btn" type="submit">Send My Free Estimate →</button>
+        <p class="hform-note">🔒 We never share your info. Typical response within 24 hrs.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">🏅</span> Family Owned &amp; Operated</div>
+    <div class="trust-item"><span class="trust-icon">📋</span> Licensed, Bonded &amp; Insured</div>
+    <div class="trust-item"><span class="trust-icon">🔨</span> 18+ Years in Northern Colorado</div>
+    <div class="trust-item"><span class="trust-icon">💬</span> Se Habla Español</div>
+    <div class="trust-item"><span class="trust-icon">✅</span> Satisfaction Guaranteed</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div class="about-imgs">
+      <div class="about-img span2">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="Stone patio build">
+      </div>
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Outdoor living space">
+      </div>
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80" alt="Landscape design">
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">Who We Are</p>
+      <h2 class="section-h">Northern Colorado's Outdoor Building Experts</h2>
+      <p class="section-p">StoneCraft Outdoors is a locally owned hardscaping and outdoor living company based in Fort Collins, Colorado. Since 2006, we've turned bare backyards into fully functional outdoor rooms — spaces where families gather, relax, and make memories.</p>
+      <p class="section-p">We handle every project ourselves. No subcontracting, no cutting corners. Our crew is experienced, professional, and treats your property like their own.</p>
+      <div class="pill-list">
+        <span class="pill">Paver Patios</span>
+        <span class="pill">Retaining Walls</span>
+        <span class="pill">Fire Features</span>
+        <span class="pill">Outdoor Kitchens</span>
+        <span class="pill">Pergolas</span>
+        <span class="pill">Driveways</span>
+        <span class="pill">Landscape Design</span>
+        <span class="pill">Snow Removal</span>
+      </div>
+      <a class="btn-amber" href="#contact">Talk to Our Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div>
+        <p class="eyebrow">What We Build</p>
+        <h2 class="section-h" style="color:var(--white);">Our Services</h2>
+      </div>
+      <a class="see-all-btn" href="#contact">Get a Quote for Any Service</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-tile">
+        <div class="tile-icon">🧱</div>
+        <div class="tile-name">Paver Patios</div>
+        <div class="tile-desc">Custom-designed paver patios that add usable square footage and serious curb appeal to any backyard.</div>
+        <span class="tile-arrow">→</span>
+      </div>
+      <div class="service-tile">
+        <div class="tile-icon">🔥</div>
+        <div class="tile-name">Fire Pits &amp; Fireplaces</div>
+        <div class="tile-desc">Gas and wood-burning fire features built from natural stone, brick, or concrete block.</div>
+        <span class="tile-arrow">→</span>
+      </div>
+      <div class="service-tile">
+        <div class="tile-icon">🍳</div>
+        <div class="tile-name">Outdoor Kitchens</div>
+        <div class="tile-desc">Full outdoor kitchen builds with grills, countertops, refrigeration, sinks, and custom stone finishes.</div>
+        <span class="tile-arrow">→</span>
+      </div>
+      <div class="service-tile">
+        <div class="tile-icon">🏗️</div>
+        <div class="tile-name">Retaining Walls</div>
+        <div class="tile-desc">Structural and decorative retaining walls in natural stone, concrete block, or treated timber.</div>
+        <span class="tile-arrow">→</span>
+      </div>
+    </div>
+    <div class="services-grid-bottom">
+      <div class="service-tile">
+        <div class="tile-icon">🌿</div>
+        <div class="tile-name">Landscape Design</div>
+        <div class="tile-desc">Full-yard design and install — native planting, irrigation, grading, and xeriscape solutions.</div>
+        <span class="tile-arrow">→</span>
+      </div>
+      <div class="service-tile">
+        <div class="tile-icon">🚗</div>
+        <div class="tile-name">Concrete Driveways</div>
+        <div class="tile-desc">Stamped, exposed aggregate, and standard concrete driveways installed to last decades.</div>
+        <span class="tile-arrow">→</span>
+      </div>
+      <div class="service-tile">
+        <div class="tile-icon">⛄</div>
+        <div class="tile-name">Snow Removal</div>
+        <div class="tile-desc">Seasonal commercial and residential snow removal contracts throughout Fort Collins and Loveland.</div>
+        <span class="tile-arrow">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section>
+  <div class="why-wrap">
+    <p class="eyebrow">Why StoneCraft</p>
+    <h2 class="section-h">What Sets Us Apart</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🔍</div>
+        <div>
+          <h3>No Subcontractors — Ever</h3>
+          <p>Every project is completed by our own trained crew. You'll meet the same people on day one who finish the job — no surprise strangers on your property.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📐</div>
+        <div>
+          <h3>Free 3D Design Rendering</h3>
+          <p>Before a single stone is moved, we'll show you exactly what your finished project will look like with a full 3D design at no cost to you.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <div>
+          <h3>Transparent, Itemized Quotes</h3>
+          <p>No surprise charges. Every estimate breaks down materials, labor, and timeline so you always know what you're paying for before you commit.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛡️</div>
+        <div>
+          <h3>5-Year Craftsmanship Warranty</h3>
+          <p>We stand behind our work. All hardscape installations come with a five-year warranty on workmanship — because we build things to last.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="process-inner">
+    <p class="eyebrow">How It Works</p>
+    <h2 class="section-h">Simple Process. Stunning Results.</h2>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Free Consultation</h4>
+        <p>We visit your property, listen to your goals, and assess the site — completely free, no pressure.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>3D Design &amp; Quote</h4>
+        <p>We produce a full 3D rendering of your project alongside a detailed, itemized cost estimate.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>We Get to Work</h4>
+        <p>Our crew handles everything — permits, materials, construction — on schedule and on budget.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Final Walkthrough</h4>
+        <p>You inspect every inch with us before we call it done. Not finished until you're thrilled.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-header">
+      <div>
+        <p class="eyebrow">Our Portfolio</p>
+        <h2 class="section-h">Recent Projects</h2>
+      </div>
+      <a class="btn-amber" href="#contact">Start Your Project</a>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-cell wide">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="Paver patio with fire pit">
+        <div class="gallery-cell-label">Paver Patio + Fire Pit — Fort Collins</div>
+      </div>
+      <div class="gallery-cell">
+        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80" alt="Retaining wall project">
+        <div class="gallery-cell-label">Retaining Wall — Loveland</div>
+      </div>
+      <div class="gallery-cell">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Outdoor living space">
+        <div class="gallery-cell-label">Outdoor Kitchen — Greeley</div>
+      </div>
+      <div class="gallery-cell">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Landscape design">
+        <div class="gallery-cell-label">Full Landscape — Fort Collins</div>
+      </div>
+      <div class="gallery-cell wide">
+        <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=900&q=80" alt="Concrete driveway">
+        <div class="gallery-cell-label">Stamped Concrete Driveway — Windsor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="reviews-inner">
+    <p class="eyebrow" style="color:var(--amber);">Customer Reviews</p>
+    <h2 class="section-h" style="color:var(--white);">Don't Take Our Word for It</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"StoneCraft transformed our bare dirt backyard into the most-used room in our house. The crew was punctual, clean, and the stonework is absolutely flawless. Already got two neighbors asking for their card."</p>
+        <div class="reviewer">
+          <div class="reviewer-av">TR</div>
+          <div>
+            <div class="reviewer-name">Tom &amp; Rachel H.</div>
+            <div class="reviewer-loc">Fort Collins, CO</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"We got three bids. StoneCraft wasn't the cheapest but they were the only ones who showed up with a 3D rendering of exactly what they'd build. That alone sold us — and the finished patio exceeded even that."</p>
+        <div class="reviewer">
+          <div class="reviewer-av">DL</div>
+          <div>
+            <div class="reviewer-name">Diane L.</div>
+            <div class="reviewer-loc">Loveland, CO</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"From consultation to final walkthrough, the whole thing was professionally run. No hidden charges, no delays. Our outdoor kitchen and pergola look like something out of a magazine. Couldn't be happier."</p>
+        <div class="reviewer">
+          <div class="reviewer-av">MV</div>
+          <div>
+            <div class="reviewer-name">Marcus V.</div>
+            <div class="reviewer-loc">Windsor, CO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Ready to Build Something Great?</h2>
+  <p>Free on-site consultation. Free 3D design. Zero pressure. Let's talk about your project.</p>
+  <div class="cta-band-btns">
+    <a class="btn-dark" href="#contact">Get a Free Estimate</a>
+    <a class="btn-white-wire" href="tel:9705550147">📞 Call (970) 555-0147</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Stone<span>Craft</span> Outdoors</div>
+        <p class="footer-desc">Northern Colorado's trusted hardscaping and outdoor living contractor since 2006. Built on quality, backed by a warranty.</p>
+        <p class="footer-contact-line"><a href="tel:9705550147">(970) 555-0147</a></p>
+        <p class="footer-contact-line"><a href="mailto:hello@stonecraftoutdoors.com">hello@stonecraftoutdoors.com</a></p>
+        <p class="footer-contact-line">Fort Collins, CO 80521</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Services</div>
+        <ul>
+          <li><a href="#">Paver Patios</a></li>
+          <li><a href="#">Retaining Walls</a></li>
+          <li><a href="#">Outdoor Kitchens</a></li>
+          <li><a href="#">Fire Pits &amp; Fireplaces</a></li>
+          <li><a href="#">Landscape Design</a></li>
+          <li><a href="#">Concrete Driveways</a></li>
+          <li><a href="#">Snow Removal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Service Areas</div>
+        <ul>
+          <li><a href="#">Fort Collins</a></li>
+          <li><a href="#">Loveland</a></li>
+          <li><a href="#">Greeley</a></li>
+          <li><a href="#">Windsor</a></li>
+          <li><a href="#">Timnath</a></li>
+          <li><a href="#">Wellington</a></li>
+          <li><a href="#">Johnstown</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Reviews</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 StoneCraft Outdoors LLC · Fort Collins, CO · All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> · <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
