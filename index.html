@@ -53,42 +53,13 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 96px;
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
-.logo { display: flex; align-items: center; gap: 0.7rem; }
-.logo-mark {
-  width: 44px; height: 44px;
-  background: var(--charcoal);
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--display);
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--amber);
-  letter-spacing: -1px;
-  flex-shrink: 0;
-}
-.logo-name {
-  font-family: var(--display);
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--charcoal);
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.logo-name span { color: var(--amber); }
-.logo-tag {
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: var(--stone);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
+.logo img { height: 160px; width: auto; display: block; }
 .nav-links { display: flex; gap: 0.15rem; list-style: none; }
 .nav-links a {
   font-family: var(--body);
@@ -806,11 +777,7 @@ footer {
 <!-- NAV -->
 <nav>
   <a class="logo" href="#">
-    <div class="logo-mark">SC</div>
-    <div>
-      <div class="logo-name">Stone<span>Craft</span></div>
-      <div class="logo-tag">Outdoors &amp; Hardscaping</div>
-    </div>
+    <img src="logo.png" alt="Logo">
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
