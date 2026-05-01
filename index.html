@@ -578,8 +578,8 @@ nav {
 }
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 280px 220px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 260px;
   gap: 10px;
 }
 .gallery-cell {
@@ -587,8 +587,10 @@ nav {
   overflow: hidden;
   background: var(--light);
   position: relative;
+  grid-column: span 2;
 }
-.gallery-cell.wide { grid-column: span 2; }
+.gallery-cell:nth-child(4) { grid-column: 2 / 4; }
+.gallery-cell:nth-child(5) { grid-column: 4 / 6; }
 .gallery-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
 .gallery-cell:hover img { transform: scale(1.06); }
 .gallery-cell-label {
@@ -1035,23 +1037,23 @@ footer {
       <a class="btn-amber" href="#contact">Start Your Project</a>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-cell wide">
+      <div class="gallery-cell">
         <img src="https://plus.unsplash.com/premium_photo-1664299231556-57f570023f87?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Paver patio with fire pit">
         <div class="gallery-cell-label">Paver Patio + Fire Pit — Fort Collins</div>
       </div>
       <div class="gallery-cell">
-        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80" alt="Retaining wall project">
+        <img src="https://images.pexels.com/photos/12763046/pexels-photo-12763046.jpeg?auto=compress&cs=tinysrgb&w=700&h=500&dpr=1" alt="Retaining wall project">
         <div class="gallery-cell-label">Retaining Wall — Loveland</div>
       </div>
       <div class="gallery-cell">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Outdoor living space">
+        <img src="https://images.pexels.com/photos/6127367/pexels-photo-6127367.jpeg?auto=compress&cs=tinysrgb&w=700&h=500&dpr=1" alt="Outdoor living space">
         <div class="gallery-cell-label">Outdoor Kitchen — Greeley</div>
       </div>
       <div class="gallery-cell">
-        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Landscape design">
+        <img src="https://images.pexels.com/photos/36338276/pexels-photo-36338276.jpeg?auto=compress&cs=tinysrgb&w=700&h=500&dpr=1" alt="Landscape design">
         <div class="gallery-cell-label">Full Landscape — Fort Collins</div>
       </div>
-      <div class="gallery-cell wide">
+      <div class="gallery-cell">
         <img src="https://images.unsplash.com/photo-1700689807667-82630348b301?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Concrete driveway">
         <div class="gallery-cell-label">Stamped Concrete Driveway — Windsor</div>
       </div>
@@ -1165,6 +1167,209 @@ footer {
     </div>
   </div>
 </footer>
+
+<!-- LIVE CHAT WIDGET -->
+<style>
+  .chat-launcher {
+    position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #2d6a35; color: #fff; border: none; cursor: pointer;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .chat-launcher:hover { background: #1e4d25; transform: scale(1.07); }
+  .chat-launcher svg { transition: opacity 0.2s; }
+  .chat-unread {
+    position: absolute; top: -4px; right: -4px;
+    background: #e05c2a; color: #fff; font-size: 11px; font-weight: 700;
+    width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid #fff;
+  }
+  .chat-window {
+    position: fixed; bottom: 92px; right: 24px; z-index: 9998;
+    width: 340px; max-height: 480px;
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    display: flex; flex-direction: column;
+    overflow: hidden; opacity: 0; pointer-events: none;
+    transform: translateY(16px) scale(0.97);
+    transition: opacity 0.22s, transform 0.22s;
+  }
+  .chat-window.open { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
+  .chat-header {
+    background: #2d6a35; color: #fff;
+    padding: 14px 16px; display: flex; align-items: center; gap: 12px;
+  }
+  .chat-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: #4a9e55; display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px; flex-shrink: 0;
+  }
+  .chat-header-info { flex: 1; }
+  .chat-header-name { font-weight: 600; font-size: 14px; }
+  .chat-header-status { font-size: 11px; opacity: 0.8; display: flex; align-items: center; gap: 4px; }
+  .chat-header-status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #7dda86; display: inline-block; }
+  .chat-close-btn { background: none; border: none; color: #fff; cursor: pointer; padding: 4px; opacity: 0.75; }
+  .chat-close-btn:hover { opacity: 1; }
+  .chat-messages {
+    flex: 1; overflow-y: auto; padding: 16px; display: flex;
+    flex-direction: column; gap: 10px; min-height: 260px; max-height: 300px;
+    background: #f7f9f7;
+  }
+  .chat-msg { display: flex; flex-direction: column; max-width: 82%; }
+  .chat-msg.agent { align-self: flex-start; }
+  .chat-msg.user { align-self: flex-end; }
+  .chat-bubble {
+    padding: 9px 13px; border-radius: 14px; font-size: 13.5px; line-height: 1.5;
+  }
+  .chat-msg.agent .chat-bubble { background: #fff; color: #1a1c1a; border: 1px solid #e4ebe4; border-bottom-left-radius: 4px; }
+  .chat-msg.user .chat-bubble { background: #2d6a35; color: #fff; border-bottom-right-radius: 4px; }
+  .chat-msg-time { font-size: 10px; color: #9aaa9a; margin-top: 3px; }
+  .chat-msg.user .chat-msg-time { text-align: right; }
+  .chat-typing { display: flex; align-items: center; gap: 4px; padding: 10px 14px; background: #fff; border: 1px solid #e4ebe4; border-radius: 14px; border-bottom-left-radius: 4px; width: fit-content; }
+  .chat-typing span { width: 6px; height: 6px; border-radius: 50%; background: #9aaa9a; animation: typingDot 1.2s infinite; }
+  .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingDot { 0%,60%,100%{transform:translateY(0);opacity:0.4} 30%{transform:translateY(-4px);opacity:1} }
+  .chat-input-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 12px; border-top: 1px solid #e4ebe4; background: #fff;
+  }
+  .chat-input {
+    flex: 1; border: 1px solid #dde8dd; border-radius: 20px;
+    padding: 8px 14px; font-size: 13px; outline: none;
+    font-family: inherit; resize: none; background: #f7f9f7;
+    transition: border-color 0.2s;
+  }
+  .chat-input:focus { border-color: #2d6a35; }
+  .chat-send-btn {
+    width: 34px; height: 34px; border-radius: 50%; border: none;
+    background: #2d6a35; color: #fff; cursor: pointer; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .chat-send-btn:hover { background: #1e4d25; }
+  .chat-powered { text-align: center; font-size: 10px; color: #b0bab0; padding: 5px 0 8px; background: #fff; }
+</style>
+
+<button class="chat-launcher" id="chatLauncher" aria-label="Open live chat">
+  <span class="chat-unread" id="chatUnread">1</span>
+  <svg id="chatIconOpen" width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <svg id="chatIconClose" width="20" height="20" fill="none" viewBox="0 0 24 24" style="display:none;"><path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+</button>
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-avatar">JM</div>
+    <div class="chat-header-info">
+      <div class="chat-header-name">Jake M.</div>
+      <div class="chat-header-status">Online now · Typically replies instantly</div>
+    </div>
+    <button class="chat-close-btn" id="chatClose" aria-label="Close chat">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Type a message…" autocomplete="off">
+    <button class="chat-send-btn" id="chatSend" aria-label="Send message">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+  <div class="chat-powered">Powered by StoneCraft Support</div>
+</div>
+
+<script>
+(function(){
+  const launcher = document.getElementById('chatLauncher');
+  const win = document.getElementById('chatWindow');
+  const closeBtn = document.getElementById('chatClose');
+  const input = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('chatSend');
+  const msgs = document.getElementById('chatMessages');
+  const unread = document.getElementById('chatUnread');
+  const iconOpen = document.getElementById('chatIconOpen');
+  const iconClose = document.getElementById('chatIconClose');
+  let isOpen = false;
+
+  const replies = [
+    "Great question! We'd love to help with that. Can you tell me a bit more about your project?",
+    "Absolutely! We offer free on-site consultations — I can get you scheduled with one of our designers.",
+    "We work on projects of all sizes, from small garden beds to full outdoor living spaces.",
+    "Our typical turnaround for a design proposal is about 3–5 business days after the consultation.",
+    "Yes, we're fully licensed and insured. Happy to send over our credentials!",
+    "We serve Fort Collins, Loveland, Windsor, Greeley, and surrounding areas.",
+    "Most residential projects are completed within 1–3 weeks depending on scope.",
+    "We'd be happy to provide references from past clients in your neighborhood!"
+  ];
+  let replyIndex = 0;
+
+  function now() {
+    return new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+  }
+
+  function addMsg(text, type) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + type;
+    div.innerHTML = `<div class="chat-bubble">${text}</div><div class="chat-msg-time">${now()}</div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function showTyping() {
+    const t = document.createElement('div');
+    t.className = 'chat-msg agent';
+    t.id = 'typingIndicator';
+    t.innerHTML = '<div class="chat-typing"><span></span><span></span><span></span></div>';
+    msgs.appendChild(t);
+    msgs.scrollTop = msgs.scrollHeight;
+    return t;
+  }
+
+  function agentReply() {
+    const typing = showTyping();
+    setTimeout(() => {
+      typing.remove();
+      addMsg(replies[replyIndex % replies.length], 'agent');
+      replyIndex++;
+    }, 1200 + Math.random() * 600);
+  }
+
+  function openChat() {
+    isOpen = true;
+    win.classList.add('open');
+    iconOpen.style.display = 'none';
+    iconClose.style.display = 'block';
+    unread.style.display = 'none';
+    if (msgs.children.length === 0) {
+      setTimeout(() => addMsg("👋 Hey there! I'm Jake from StoneCraft. How can I help you today?", 'agent'), 400);
+    }
+    setTimeout(() => input.focus(), 300);
+  }
+
+  function closeChat() {
+    isOpen = false;
+    win.classList.remove('open');
+    iconOpen.style.display = 'block';
+    iconClose.style.display = 'none';
+  }
+
+  function send() {
+    const text = input.value.trim();
+    if (!text) return;
+    addMsg(text, 'user');
+    input.value = '';
+    agentReply();
+  }
+
+  launcher.addEventListener('click', () => isOpen ? closeChat() : openChat());
+  closeBtn.addEventListener('click', closeChat);
+  sendBtn.addEventListener('click', send);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') send(); });
+})();
+</script>
 
 </body>
 </html>
